@@ -34,8 +34,14 @@ namespace Apocalypse
         // Група врятованих людей відповідно збільшується
         // СуперРятівник витрачає енергію (чим більше знищив, тим більше втратив)
         // Після цього викликається подія SuperSaviorMadeAction
+
         public void OnEvenChange(Zombies zombies, People saved_people)
         {
+            if (Energy < 60)
+            {
+                Console.WriteLine($"{Name} - Замало сил для бою! Енергія: {Energy}\n");
+                return;
+            }
             Console.ForegroundColor = ConsoleColor.Magenta;
             Random random = new Random();
             int randomNumber = random.Next(0, 30); // Перетворює від 0 до 30 зомбі

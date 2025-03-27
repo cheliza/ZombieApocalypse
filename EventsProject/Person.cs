@@ -11,7 +11,7 @@ namespace Apocalypse
     // Базовий клас для груп людей
     public class People
     {
-        protected int Number_of_people {  get; set; } // Кількість людей у групі
+        protected int Number_of_people {   get; set; } // Кількість людей у групі
         protected string People_role {  get; set; } // Роль групи
 
         public People(int people_amount,  string role)
@@ -22,7 +22,7 @@ namespace Apocalypse
         public int GetPeopleAmount() { return Number_of_people; }
         public override string ToString()
         {
-            return $"{People_role} - кількість груп {Number_of_people}";
+            return $"{People_role} - кількість кількість людей {Number_of_people}";
         }
 
         // Метод для зміни кількості людей у групі
@@ -43,6 +43,7 @@ namespace Apocalypse
         {
             Guard_name = guard_name;
         }
+
         public override string ToString() {
             return $"{base.ToString()}, Гвардія: {Guard_name}";
         }
@@ -51,7 +52,7 @@ namespace Apocalypse
         public void OnDayHasCome()
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"Гвардія:{Number_of_people} {Guard_name} ліквідують наслідки атаки");
+            Console.WriteLine($"Гвардія({Number_of_people}): {Guard_name} ліквідують наслідки атаки");
             Console.ResetColor();
 
         }
@@ -59,7 +60,7 @@ namespace Apocalypse
         public void OnNightHasCome()
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"Гвардія:{Number_of_people} {Guard_name} захищають людей від атаки");
+            Console.WriteLine($"Гвардія({Number_of_people}): {Guard_name} захищають людей від атаки");
             Console.ResetColor();
         }
        
@@ -83,14 +84,14 @@ namespace Apocalypse
         public void OnDayHasCome()
         {
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine($"Цивільні: {Number_of_people} {Civilians_type} {Activity}");
+            Console.WriteLine($"Цивільні({Number_of_people}): {Civilians_type} {Activity}");
             Console.ResetColor();
         }
         // Дії цивільних вночі
         public void OnNightHasCome()
         {
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine($"Цивільні:{Number_of_people} {Civilians_type} ховаються вдома");
+            Console.WriteLine($"Цивільні({Number_of_people}): {Civilians_type} ховаються вдома");
             Console.ResetColor();
         }
         // Щосуботи частина цивільних-врятованих стає гвардією
@@ -102,7 +103,7 @@ namespace Apocalypse
                 dayguard.ChangeNumberOfPeople(civiliansToTransfer);
                 this.ChangeNumberOfPeople(-civiliansToTransfer);
             }
-            Console.WriteLine($"{dayguards.Count*civiliansToTransfer} люди завершили лікарняний\n");
+            Console.WriteLine($"{dayguards.Count*civiliansToTransfer} - завершили лікарняний\n");
         }
 
         // Реакція цивільних на появу козака-рятівника
