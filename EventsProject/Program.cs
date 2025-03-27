@@ -96,6 +96,13 @@ namespace Apocalypse
                 {
                     Console.WriteLine("Неправильний формат часу або введено від'ємне число.");
                 }
+
+                if ((workers.GetNumberOfPeople() + students.GetNumberOfPeople() + school_students.GetNumberOfPeople() + pensioners.GetNumberOfPeople())<=0)
+                {
+                    Console.WriteLine("ЗОМБІ ПЕРЕМОГЛИ!!!"); //якщо кількість цивільних людей досягає 0
+                    running = false; 
+                    break; 
+                }
             }
 
 

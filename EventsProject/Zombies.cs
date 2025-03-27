@@ -37,21 +37,15 @@ namespace Apocalypse
 
             Random random = new Random();
             int transformedToZombies = 0;
-            int totalCivilians = 0;
             foreach (Civilians group in groups)
             {
                 int randomNumber = random.Next(0, 6); // Випадкове число від 0 до 5
                 group.ChangeNumberOfPeople(-randomNumber);
                 transformedToZombies += randomNumber;
-                totalCivilians += group.GetPeopleAmount();
             }
 
             this.ChangeZombiesAmount(transformedToZombies);  // Додаємо заражених до зомбі
-            if (totalCivilians <= 0)
-            {
-                Console.WriteLine("ЗОМБІ ПЕРЕМОГЛИ!!!");
-                Environment.Exit(0); // Завершуєм програму
-            }
+            
 
             Console.ResetColor();
         }
